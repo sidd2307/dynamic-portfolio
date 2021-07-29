@@ -1,0 +1,171 @@
+const express = require('express')
+const router = express.Router();
+// Bring in bcrypt
+const bcrypt = require('bcryptjs')
+// Bring in Passport
+const passport = require('passport')
+
+// User Model
+const User = require('../models/User')
+
+// Login Routes
+router.get('/login', (req, res) => res.render('login'))
+
+// Register Routes
+router.get('/register', (req, res) => res.render('register'))
+
+// Register Handle--get
+router.post('/register', (req, res) => {
+
+    const { name, email, branch, year, domain, skill_1, skill_2, skill_3, skill_4, skill_5, skill_6, skill_7, skill_8, skill_9, skill_10, project1head, project1description, project2head, project2description, project3head, project3description, instagram, twitter, password, password2 } = req.body;
+    let errors = [];
+
+    // Check required fields
+    if (!name || !email || !password || !password2) {
+        errors.push({ msg: 'Please fill in all the fields!' })
+    }
+
+    // Check Passwords match
+    if (password !== password2) {
+        errors.push({ msg: "Passwords do not match!" })
+    }
+
+    // Check Passwords lengths
+    if (password.length < 6) {
+        errors.push({ msg: "Password should be atleast 6 characters long!" })
+    }
+
+    // Check if there is error
+    if (errors.length > 0) {
+        // Re render Registration page if there is error!
+        res.render('register', {
+            // Pass the errors--we dont want the fields to completely clear
+            errors,
+            name,
+            email,
+            branch,
+            year,
+            domain,
+            skill_1,
+            skill_2,
+            skill_3,
+            skill_4,
+            skill_5,
+            skill_6,
+            skill_7,
+            skill_8,
+            skill_9,
+            skill_10,
+            project1head,
+            project1description,
+            project2head,
+            project2description,
+            project3head,
+            project3description,
+            instagram,
+            twitter,
+            password,
+            password2
+        })
+    } else {
+        // Validation Passed!
+        // Make sure user exists
+        User.findOne({ email: email })
+            .then(user => {
+                if (user) {
+                    // User already exists in db
+                    errors.push({ msg: 'Email is already registered!' })
+                    res.render('register', {
+                        errors,
+                        name,
+                        email,
+                        branch,
+                        year,
+                        domain,
+                        skill_1,
+                        skill_2,
+                        skill_3,
+                        skill_4,
+                        skill_5,
+                        skill_6,
+                        skill_7,
+                        skill_8,
+                        skill_9,
+                        skill_10,
+                        project1head,
+                        project1description,
+                        project2head,
+                        project2description,
+                        project3head,
+                        project3description,
+                        instagram,
+                        twitter,
+                        password,
+                        password2
+                    })
+                } else {
+                    // Create new instance
+                    const newUser = new User({
+                        name,
+                        email,
+                        branch,
+                        year,
+                        domain,
+                        skill_1,
+                        skill_2,
+                        skill_3,
+                        skill_4,
+                        skill_5,
+                        skill_6,
+                        skill_7,
+                        skill_8,
+                        skill_9,
+                        skill_10,
+                        project1head,
+                        project1description,
+                        project2head,
+                        project2description,
+                        project3head,
+                        project3description,
+                        instagram,
+                        twitter,
+                        password,
+                    })
+                    // Hash Passwords now
+                    bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        if (err) throw err;
+
+                        // Set password to hashed
+                        newUser.password = hash;
+
+                        // Save our user
+                        newUser.save()
+                            // Redirect User to login page 
+                            .then(user => {
+                                req.flash('success_msg', "You are now Registered and can login!")
+                                res.redirect('login');
+                            })
+                            .catch(err => console.log(err));
+                    }))
+                }
+            })
+    }
+})
+
+// Login Handle
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    })(req, res, next)
+})
+
+// Logout Handle
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', "You are logged out!")
+    res.redirect('/users/login')
+})
+
+module.exports = router;

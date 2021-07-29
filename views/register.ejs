@@ -1,0 +1,303 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fas fa-user-plus"></i> Register
+      </h1>
+      <%- include ("./partials/messages"); %>
+      <form action="/users/register" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="name"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter Name"
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+            value="<%= typeof email != 'undefined' ? email : '' %>"
+          />
+        </div>
+        <hr>
+        <div class="form-group">
+          <label for="branch">Branch</label>
+            <select name="branch" class="form-control form-control-default" required>
+              <option value="Architecture">Architecture</option>
+              <option value="Biotechnology">Biotechnology</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Computer Science and Applications (MCA)">Computer Science and Applications (MCA)</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Fashion and Apparel Technology">Fashion and Apparel Technology</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Instrumentation and Electronics Engineering">Instrumentation and Electronics Engineering</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Textile Engineering">Textile Engineering</option>
+              <option value="Planning">Planning</option>
+              <option value="Mathematics and Humanities">Mathematics and Humanities</option>
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="year">Year</label>
+            <select name="year" class="form-control form-control-default" required>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+              <option value="5th Year">5th Year</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="domain">Domain</label>
+            <select name="domain" class="form-control form-control-default" required>
+              <option value="Web Developmer">Web Development</option>
+              <option value="Data Scientist">DS/ML</option>
+              <option value="App Developer">App Development</option>
+              <option value="MATLAB Developer">MATLAB</option>
+              <option value="Illustration Designer">Illustration</option>
+              <option value="UI Designer">UI Design</option>
+              <option value="IOT/ES Engineer">IOT/ES</option>
+              <option value="PCB Designer">PCB Design</option>
+              <option value="PLC Developer">PLC</option>
+              <option value="Python Develoer">Python Development</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="skill_1">Skill-1</label>
+          <input
+            type="text"
+            id="skill_1"
+            name="skill_1"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_1 != 'undefined' ? skill_1 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_2">Skill-2</label>
+          <input
+            type="text"
+            id="skill_2"
+            name="skill_2"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_2 != 'undefined' ? skill_2 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_3">Skill-3</label>
+          <input
+            type="text"
+            id="skill_3"
+            name="skill_3"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_3 != 'undefined' ? skill_3 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_4">Skill-4</label>
+          <input
+            type="text"
+            id="skill_4"
+            name="skill_4"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_4 != 'undefined' ? skill_4 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_5">Skill-5</label>
+          <input
+            type="text"
+            id="skill_5"
+            name="skill_5"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_5 != 'undefined' ? skill_5 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_6">Skill-6</label>
+          <input
+            type="text"
+            id="skill_6"
+            name="skill_6"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_6 != 'undefined' ? skill_6 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_7">Skill-7</label>
+          <input
+            type="text"
+            id="skill_7"
+            name="skill_7"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_7 != 'undefined' ? skill_7 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_8">Skill-8</label>
+          <input
+            type="text"
+            id="skill_8"
+            name="skill_8"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_8 != 'undefined' ? skill_8 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_9">Skill-9</label>
+          <input
+            type="text"
+            id="skill_9"
+            name="skill_9"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_9 != 'undefined' ? skill_9 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="skill_10">Skill-10</label>
+          <input
+            type="text"
+            id="skill_10"
+            name="skill_10"
+            class="form-control"
+            placeholder="Enter your skills"
+            value="<%= typeof skill_10 != 'undefined' ? skill_10 : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="project1head">Project-1</label>
+          <input
+            type="text"
+            id="project1head"
+            name="project1head"
+            class="form-control"
+            placeholder="Enter Heading of Project-1"
+            value="<%= typeof project1head != 'undefined' ? project1head : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="project1description">Description</label>
+          <input
+            type="text"
+            id="project1description"
+            name="project1description"
+            class="form-control"
+            placeholder="Enter a brief Description of your Project-1"
+            value="<%= typeof project1description != 'undefined' ? project1description : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="project2head">Project-2</label>
+          <input
+            type="text"
+            id="project2head"
+            name="project2head"
+            class="form-control"
+            placeholder="Enter Heading of Project-2"
+            value="<%= typeof project2head != 'undefined' ? project2head : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="project2description">Description</label>
+          <input
+            type="text"
+            id="project2description"
+            name="project2description"
+            class="form-control"
+            placeholder="Enter a brief Description of your Project-2"
+            value="<%= typeof project2description != 'undefined' ? project2description : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="project3head">Project-3</label>
+          <input
+            type="text"
+            id="project3head"
+            name="project3head"
+            class="form-control"
+            placeholder="Enter Heading of Project-3"
+            value="<%= typeof project3head != 'undefined' ? project3head : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="project3description">Description</label>
+          <input
+            type="text"
+            id="project3description"
+            name="project3description"
+            class="form-control"
+            placeholder="Enter a brief Description of your Project-3"
+            value="<%= typeof project3description != 'undefined' ? project3description : '' %>"
+          />
+        <div class="form-group">
+          <label for="twitter">Twitter Handle</label>
+          <input
+            type="text"
+            id="twitter"
+            name="twitter"
+            class="form-control"
+            placeholder="Enter your Twitter ID. Eg. jeffbezoz4"
+            value="<%= typeof twitter != 'undefined' ? twitter : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="instagram">Instagram Handle</label>
+          <input
+            type="text"
+            id="instagram"
+            name="instagram"
+            class="form-control"
+            placeholder="Enter your Instagram ID. Eg. jeff._.bezoz"
+            value="<%= typeof instagram != 'undefined' ? instagram : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Create Password"
+            value="<%= typeof password != 'undefined' ? password : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            class="form-control"
+            placeholder="Confirm Password"
+            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-3">
+          Register
+        </button>
+      </form>
+      <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+    </div>
+  </div>
+</div>
